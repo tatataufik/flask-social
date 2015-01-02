@@ -185,7 +185,7 @@ def login_handler(response, provider, query):
         redirect_url = session.pop(key, get_post_login_redirect())
 
         login_completed.send(current_app._get_current_object(),
-                             provider=provider, user=user)
+                             provider=provider, user=user,oauth_response=response)
 
         return redirect(redirect_url)
 
